@@ -1,0 +1,12 @@
+# Normalização automática de quebras de linha para arquivos de texto
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Arquivos binários (PDFs e Imagens)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary

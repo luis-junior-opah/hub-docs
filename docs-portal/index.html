@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Documentação — ILC Integrator</title>
+  <link rel="stylesheet" href="assets/css/docs-theme.css">
+  <link rel="stylesheet" href="assets/css/docs-layout.css?v=1.1">
+  <link rel="stylesheet" href="assets/css/docs-components.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <div id="app-container">
+    <!-- Header Topo Fixo -->
+    <header class="docs-header">
+      <div class="header-left">
+        <button class="btn-icon mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir Menu">
+          ☰
+        </button>
+        <a href="#home" class="brand-logo" onclick="window.navigateTo('home')">
+          <img src="assets/img/Claro.png" alt="ILC Integrator" class="brand-logo-img brand-logo-light">
+          <img src="assets/img/Escuro.png" alt="ILC Integrator" class="brand-logo-img brand-logo-dark">
+          <span class="brand-name">ILC Integrator</span>
+        </a>
+      </div>
+
+      <div class="header-center">
+        <button class="search-trigger-btn" id="search-trigger-btn">
+          <span style="display: flex; align-items: center; gap: 8px;">
+            <span>🔍</span>
+            <span>Buscar módulos, cadastros, regras, APIs, QA...</span>
+          </span>
+          <span class="search-shortcut-kbd">Ctrl K</span>
+        </button>
+      </div>
+
+      <div class="header-right">
+        <button class="btn-icon" id="theme-toggle-btn" onclick="window.docsApp.toggleTheme()" title="Alternar Modo Claro / Escuro">
+          🌙
+        </button>
+        <a href="https://homolog.ilclogportal.com.br" target="_blank" rel="noopener noreferrer" class="btn-portal-link" title="Acessar Ambiente de Homologação">
+          <span>🚀 Acessar Integrator</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Layout Principal -->
+    <div class="docs-main-layout">
+      
+      <!-- Sidebar Esquerda -->
+      <aside class="docs-sidebar" id="docs-sidebar">
+        
+        <!-- Barra de Ações Rápidas de Grupos -->
+        <div class="sidebar-actions-bar">
+          <span class="sidebar-actions-label">Navegação & Módulos</span>
+          <button type="button" class="sidebar-toggle-all-btn" id="sidebar-toggle-all-btn" onclick="window.docsApp.toggleAllSidebarGroups()" title="Alternar todos os grupos">
+            <span>⇕</span>
+            <span id="sidebar-toggle-all-text">Recolher Todos</span>
+          </button>
+        </div>
+
+        <!-- 1. GOVERNANÇA -->
+        <div class="sidebar-group" id="group-governanca">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-governanca')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">🏛️</span>
+              <span>Governança</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">5</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item active">
+                <a href="#home" data-target="home" onclick="window.navigateTo('home')">
+                  <span class="nav-icon">🏢</span>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#mapa_mental" data-target="mapa_mental" onclick="window.navigateTo('mapa_mental')">
+                  <span class="nav-icon">🗺️</span>
+                  <span>Mapa de Relações</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#instrucoes_trabalho" data-target="instrucoes_trabalho" onclick="window.navigateTo('instrucoes_trabalho')">
+                  <span class="nav-icon">📚</span>
+                  <span>Catálogo de ITs</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#central_qa" data-target="central_qa" onclick="window.navigateTo('central_qa')">
+                  <span class="nav-icon">🧪</span>
+                  <span>Central de QA</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#hub_tecnologia" data-target="hub_tecnologia" onclick="window.navigateTo('hub_tecnologia')">
+                  <span class="nav-icon">💻</span>
+                  <span>Hub de Tecnologia</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. FUNDAÇÃO -->
+        <div class="sidebar-group" id="group-fundacao">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-fundacao')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">🏗️</span>
+              <span>Fundação</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">15</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item">
+                <a href="#cad_usuarios" data-target="cad_usuarios" onclick="window.navigateTo('cad_usuarios')">
+                  <span class="nav-icon">👤</span>
+                  <span>Usuário</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_perfis" data-target="cad_perfis" onclick="window.navigateTo('cad_perfis')">
+                  <span class="nav-icon">🛡️</span>
+                  <span>Perfil</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_empresas" data-target="cad_empresas" onclick="window.navigateTo('cad_empresas')">
+                  <span class="nav-icon">🏢</span>
+                  <span>Empresa</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_grupos_empresas" data-target="cad_grupos_empresas" onclick="window.navigateTo('cad_grupos_empresas')">
+                  <span class="nav-icon">🌐</span>
+                  <span>Grupo Empresas</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_cliente_fornecedor" data-target="cad_cliente_fornecedor" onclick="window.navigateTo('cad_cliente_fornecedor')">
+                  <span class="nav-icon">🔗</span>
+                  <span>Cliente x Fornecedor</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_contatos_upload" data-target="cad_contatos_upload" onclick="window.navigateTo('cad_contatos_upload')">
+                  <span class="nav-icon">📥</span>
+                  <span>Upload Contatos</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_prazos_entrega" data-target="cad_prazos_entrega" onclick="window.navigateTo('cad_prazos_entrega')">
+                  <span class="nav-icon">⏱️</span>
+                  <span>Prazos de Entrega</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_rotas" data-target="cad_rotas" onclick="window.navigateTo('cad_rotas')">
+                  <span class="nav-icon">🛣️</span>
+                  <span>Cadastro de Rotas</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_frequencias" data-target="cad_frequencias" onclick="window.navigateTo('cad_frequencias')">
+                  <span class="nav-icon">📅</span>
+                  <span>Frequências</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_pecas" data-target="cad_pecas" onclick="window.navigateTo('cad_pecas')">
+                  <span class="nav-icon">🔩</span>
+                  <span>Cliente Peça</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_itens_especiais" data-target="cad_itens_especiais" onclick="window.navigateTo('cad_itens_especiais')">
+                  <span class="nav-icon">⚠️</span>
+                  <span>Itens Especiais</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_embalagens" data-target="cad_embalagens" onclick="window.navigateTo('cad_embalagens')">
+                  <span class="nav-icon">📦</span>
+                  <span>Cadastro Embalagem</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_motivos_congelamento" data-target="cad_motivos_congelamento" onclick="window.navigateTo('cad_motivos_congelamento')">
+                  <span class="nav-icon">❄️</span>
+                  <span>Motivo Congel. NF</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_config_comprovante" data-target="cad_config_comprovante" onclick="window.navigateTo('cad_config_comprovante')">
+                  <span class="nav-icon">📸</span>
+                  <span>Configuração de Comprovantes</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#cad_workflow" data-target="cad_workflow" onclick="window.navigateTo('cad_workflow')">
+                  <span class="nav-icon">🔀</span>
+                  <span>Workflow</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. DEMANDAS -->
+        <div class="sidebar-group" id="group-demandas">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-demandas')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">📋</span>
+              <span>Demandas</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">9</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item">
+                <a href="#consulta_edi" data-target="consulta_edi" onclick="window.navigateTo('consulta_edi')">
+                  <span class="nav-icon">📡</span>
+                  <span>Consulta EDI</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#solicitacao_ordem_compra" data-target="solicitacao_ordem_compra" onclick="window.navigateTo('solicitacao_ordem_compra')">
+                  <span class="nav-icon">📝</span>
+                  <span>Solic Ordem Compra</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#consulta_ordem_compra" data-target="consulta_ordem_compra" onclick="window.navigateTo('consulta_ordem_compra')">
+                  <span class="nav-icon">🔍</span>
+                  <span>Consulta de Ordem</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gestao_pedidos" data-target="gestao_pedidos" onclick="window.navigateTo('gestao_pedidos')">
+                  <span class="nav-icon">🛒</span>
+                  <span>Pedidos</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#pedidos_transportador" data-target="pedidos_transportador" onclick="window.navigateTo('pedidos_transportador')">
+                  <span class="nav-icon">🚚</span>
+                  <span>Pedidos Transportador</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#promessa_entrega" data-target="promessa_entrega" onclick="window.navigateTo('promessa_entrega')">
+                  <span class="nav-icon">📅</span>
+                  <span>Promessa de Entrega</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#respostas_promessa" data-target="respostas_promessa" onclick="window.navigateTo('respostas_promessa')">
+                  <span class="nav-icon">🤝</span>
+                  <span>Respostas Promessa</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#monitor_pe" data-target="monitor_pe" onclick="window.navigateTo('monitor_pe')">
+                  <span class="nav-icon">🚦</span>
+                  <span>Monitor PE</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gestao_demanda" data-target="gestao_demanda" onclick="window.navigateTo('gestao_demanda')">
+                  <span class="nav-icon">📊</span>
+                  <span>Gestão de Demandas</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. CARGA -->
+        <div class="sidebar-group" id="group-carga">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-carga')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">📐</span>
+              <span>Carga</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">7</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item">
+                <a href="#consulta_volumetria" data-target="consulta_volumetria" onclick="window.navigateTo('consulta_volumetria')">
+                  <span class="nav-icon">📐</span>
+                  <span>Consulta Volumetria</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#previsao_carga" data-target="previsao_carga" onclick="window.navigateTo('previsao_carga')">
+                  <span class="nav-icon">📦</span>
+                  <span>Previsão de Carga</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#roteirizador" data-target="roteirizador" onclick="window.navigateTo('roteirizador')">
+                  <span class="nav-icon">🗺️</span>
+                  <span>Roteirizador</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#relatorio_ocupacao_carga" data-target="relatorio_ocupacao_carga" onclick="window.navigateTo('relatorio_ocupacao_carga')">
+                  <span class="nav-icon">📈</span>
+                  <span>ROC</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#frete_expresso" data-target="frete_expresso" onclick="window.navigateTo('frete_expresso')">
+                  <span class="nav-icon">⚡</span>
+                  <span>Frete Expresso</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#congelamento_nf" data-target="congelamento_nf" onclick="window.navigateTo('congelamento_nf')">
+                  <span class="nav-icon">❄️</span>
+                  <span>Congel. de Notas</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#itens_criticos" data-target="itens_criticos" onclick="window.navigateTo('itens_criticos')">
+                  <span class="nav-icon">🚨</span>
+                  <span>Itens Críticos</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5. EXECUÇÃO -->
+        <div class="sidebar-group" id="group-execucao">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-execucao')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">🚚</span>
+              <span>Execução</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">6</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item">
+                <a href="#followup_viagens" data-target="followup_viagens" onclick="window.navigateTo('followup_viagens')">
+                  <span class="nav-icon">🚛</span>
+                  <span>Follow Up de Viagens</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gestao_embarcada" data-target="gestao_embarcada" onclick="window.navigateTo('gestao_embarcada')">
+                  <span class="nav-icon">📱</span>
+                  <span>Gestão Embarcada</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gate_entrada" data-target="gate_entrada" onclick="window.navigateTo('gate_entrada')">
+                  <span class="nav-icon">🚪</span>
+                  <span>Gate De Entrada</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gestao_embalagem" data-target="gestao_embalagem" onclick="window.navigateTo('gestao_embalagem')">
+                  <span class="nav-icon">🔄</span>
+                  <span>Gestão Embalagem</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gestao_pedagios" data-target="gestao_pedagios" onclick="window.navigateTo('gestao_pedagios')">
+                  <span class="nav-icon">🪙</span>
+                  <span>Gestão Pedágio</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#gestao_md" data-target="gestao_md" onclick="window.navigateTo('gestao_md')">
+                  <span class="nav-icon">📑</span>
+                  <span>Gestão MD</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 6. TORRE DE CONTROLE -->
+        <div class="sidebar-group" id="group-torre-controle">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-torre-controle')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">🛰️</span>
+              <span>Torre de Controle</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">5</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item">
+                <a href="#cockpit" data-target="cockpit" onclick="window.navigateTo('cockpit')">
+                  <span class="nav-icon">🎯</span>
+                  <span>Tracking Cockpit</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#smart_tracking" data-target="smart_tracking" onclick="window.navigateTo('smart_tracking')">
+                  <span class="nav-icon">🛰️</span>
+                  <span>Smart Tracking</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#tracking_pecas" data-target="tracking_pecas" onclick="window.navigateTo('tracking_pecas')">
+                  <span class="nav-icon">🔍</span>
+                  <span>Tracking</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#smart_x" data-target="smart_x" onclick="window.navigateTo('smart_x')">
+                  <span class="nav-icon">⚡</span>
+                  <span>SMART X</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#smart_x_v2" data-target="smart_x_v2" onclick="window.navigateTo('smart_x_v2')">
+                  <span class="nav-icon">🚀</span>
+                  <span>SMART X (V2)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 7. INTELIGÊNCIA -->
+        <div class="sidebar-group" id="group-inteligencia">
+          <button type="button" class="sidebar-group-header" onclick="window.docsApp.toggleSidebarGroup('group-inteligencia')">
+            <div class="sidebar-group-title-wrapper">
+              <span class="sidebar-group-icon">📊</span>
+              <span>Inteligência</span>
+            </div>
+            <div class="sidebar-group-meta">
+              <span class="sidebar-group-badge">5</span>
+              <span class="sidebar-group-chevron">▶</span>
+            </div>
+          </button>
+          <div class="sidebar-group-content">
+            <ul class="sidebar-nav-list">
+              <li class="sidebar-nav-item">
+                <a href="#relatorios_bi" data-target="relatorios_bi" onclick="window.navigateTo('relatorios_bi')">
+                  <span class="nav-icon">📊</span>
+                  <span>Lista Relatórios</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#faturamento_frete" data-target="faturamento_frete" onclick="window.navigateTo('faturamento_frete')">
+                  <span class="nav-icon">💰</span>
+                  <span>Faturamento</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#api_gateway_swagger" data-target="api_gateway_swagger" onclick="window.navigateTo('api_gateway_swagger')">
+                  <span class="nav-icon">⚡</span>
+                  <span>API Integrator</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#xforms_formularios" data-target="xforms_formularios" onclick="window.navigateTo('xforms_formularios')">
+                  <span class="nav-icon">📋</span>
+                  <span>XForms (Formulários)</span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="#helpdesk_suporte" data-target="helpdesk_suporte" onclick="window.navigateTo('helpdesk_suporte')">
+                  <span class="nav-icon">🎧</span>
+                  <span>HelpDesk</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Conteúdo Central -->
+      <main class="docs-content-wrapper">
+        <article class="docs-article" id="article-render-area">
+          <!-- Conteúdo dinâmico injetado via docs-app.js -->
+        </article>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Modal de Busca Global (Command Palette) -->
+  <div class="search-modal-backdrop" id="search-modal-backdrop">
+    <div class="search-modal-window">
+      <div class="search-input-header">
+        <span>🔍</span>
+        <input type="text" class="search-main-input" id="search-main-input" placeholder="Pesquisar módulos, cadastros, ITs, regras, APIs, BDD..." autocomplete="off">
+        <span class="search-shortcut-kbd">ESC</span>
+      </div>
+      <ul class="search-results-list" id="search-results-list">
+        <!-- Itens injetados dinamicamente -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal de Diagrama em Tela Cheia (Zoom & Pan Viewer) -->
+  <div class="diagram-modal-backdrop" id="diagram-modal-backdrop">
+    <div class="diagram-modal-window">
+      <div class="diagram-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">
+          <span>🗺️</span>
+          <span id="diagram-modal-title">Visualizador de Diagrama em Alta Resolução</span>
+        </div>
+        <div class="diagram-modal-actions">
+          <div class="diagram-zoom-controls">
+            <button class="zoom-btn" onclick="window.zoomModalDiagram(1.2)" title="Aumentar Zoom (Zoom In)">🔍 +</button>
+            <span class="zoom-level-badge" id="modal-zoom-badge">100%</span>
+            <button class="zoom-btn" onclick="window.zoomModalDiagram(0.8)" title="Diminuir Zoom (Zoom Out)">🔍 -</button>
+            <button class="zoom-btn" onclick="window.resetModalDiagram()" title="Restaurar Tamanho Original">↺ Reset</button>
+          </div>
+          <button class="btn-icon" onclick="window.closeDiagramModal()" style="font-size: 1.1rem;" title="Fechar (ESC)">✕</button>
+        </div>
+      </div>
+      <div class="diagram-modal-body" id="diagram-modal-body">
+        <div class="diagram-zoomable-content" id="diagram-modal-content">
+          <!-- Conteúdo SVG do Mermaid injetado aqui -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Visualizador de PDF (Instruções de Trabalho) -->
+  <div class="pdf-modal-backdrop" id="pdf-modal-backdrop">
+    <div class="pdf-modal-window">
+      <div class="pdf-modal-header">
+        <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">
+          <span style="font-size: 1.2rem;">📄</span>
+          <span id="pdf-modal-title">Instrução de Trabalho</span>
+        </div>
+        <div class="pdf-modal-actions">
+          <a href="#" id="pdf-modal-download-btn" class="btn-portal-link" download style="padding: 5px 14px; font-size: 0.82rem;">
+            <span>📥 Baixar PDF</span>
+          </a>
+          <a href="#" id="pdf-modal-external-btn" target="_blank" rel="noopener noreferrer" class="zoom-btn" style="padding: 6px 12px; font-size: 0.82rem;" title="Abrir em Nova Guia">
+            <span>↗ Nova Guia</span>
+          </a>
+          <button class="btn-icon" onclick="window.closePdfModal()" style="font-size: 1.1rem;" title="Fechar (ESC)">✕</button>
+        </div>
+      </div>
+      <div class="pdf-modal-body">
+        <iframe id="pdf-modal-iframe" src="" class="pdf-iframe" title="Leitor de Instrução de Trabalho"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/docs-database.js"></script>
+  <script src="assets/js/search-engine.js"></script>
+  <script src="assets/js/docs-app.js?v=1.1"></script>
+</body>
+</html>

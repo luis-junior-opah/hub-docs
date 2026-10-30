@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 110" width="340" height="110">
+  <!-- Ícone circular ILC (idêntico ao claro — as cores do ícone ficam iguais) -->
+  <g transform="translate(8, 5)">
+    <circle cx="48" cy="50" r="46" fill="#8A8A8A"/>
+    <path d="M48,50 L4,65 A46,46 0 0,0 48,96 Z" fill="#00ADEF"/>
+    <path d="M48,50 L4,65 A46,46 0 0,0 15,25 Z" fill="#3BBFC9"/>
+    <path d="M48,50 L92,36 A46,46 0 0,0 48,4 Z" fill="#6D6E70"/>
+    <path d="M48,50 L48,96 A46,46 0 0,0 82,78 Z" fill="#39B54A"/>
+    <path d="M48,50 L82,78 A46,46 0 0,0 92,36 Z" fill="#006838"/>
+    <path d="M48,50 L15,25 A46,46 0 0,0 48,4 Z" fill="#F7B731"/>
+    <rect x="40" y="18" width="13" height="64" rx="3" fill="#00ADEF" opacity="0.85"/>
+    <circle cx="48" cy="50" r="8" fill="#2D2D2D"/>
+  </g>
+
+  <!-- Texto ILC - branco para tema escuro -->
+  <text x="112" y="58" font-family="'Arial', 'Helvetica Neue', sans-serif" font-size="52" font-weight="700" fill="#FFFFFF" letter-spacing="-1">ILC</text>
+
+  <!-- Texto INTEGRATOR - branco translúcido -->
+  <text x="113" y="78" font-family="'Arial', 'Helvetica Neue', sans-serif" font-size="16" font-weight="400" fill="rgba(255,255,255,0.85)" letter-spacing="3.5">INTEGRATOR</text>
+
+  <!-- Texto LOGISTICS COMPANY - branco mais translúcido -->
+  <text x="113" y="96" font-family="'Arial', 'Helvetica Neue', sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.65)" letter-spacing="2.5">LOGISTICS COMPANY</text>
+</svg>

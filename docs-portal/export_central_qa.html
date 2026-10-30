@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de QA — ILC Integrator (Documento Oficial)</title>
+  <link rel="stylesheet" href="assets/css/docs-theme.css">
+  <link rel="stylesheet" href="assets/css/docs-layout.css">
+  <link rel="stylesheet" href="assets/css/docs-components.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    /* Estilos específicos para a página limpa de exportação */
+    body {
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .export-container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      background: #ffffff;
+      min-height: 100vh;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .export-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .export-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+
+    .export-brand img {
+      height: 38px;
+      width: auto;
+    }
+
+    .export-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background-color: var(--ilc-primary);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 82, 204, 0.25);
+    }
+
+    .btn-action-print:hover {
+      background-color: var(--ilc-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-action-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background-color: #ffffff;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.88rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action-secondary:hover {
+      background-color: #f1f5f9;
+      color: var(--text-primary);
+    }
+
+    /* Rodapé institucional do documento */
+    .export-doc-footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+      }
+      .export-top-bar {
+        display: none !important;
+      }
+      .export-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="export-container">
+    
+    <!-- Barra Superior de Ações Rápidas (Oculta na Impressão) -->
+    <div class="export-top-bar">
+      <div class="export-brand">
+        <img src="assets/img/Claro.png" alt="ILC Integrator">
+        <span>ILC Integrator • Documentação Oficial de QA</span>
+      </div>
+      <div class="export-actions">
+        <a href="index.html#central_qa" class="btn-action-secondary">
+          <span>← Voltar ao Portal</span>
+        </a>
+        <button class="btn-action-print" onclick="window.print()">
+          <span>🖨️</span>
+          <span>Salvar como PDF / Imprimir</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cabeçalho do Documento -->
+    <header class="article-header" style="margin-bottom: 28px; border-bottom: 2px solid var(--color-qa); padding-bottom: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="tag-badge" style="background-color: var(--color-qa-bg); color: var(--color-qa); border: 1px solid var(--color-qa-border); font-weight: 700; font-size: 0.8rem; padding: 4px 10px;">
+            GOVERNANÇA CORPORATIVA & QUALIDADE
+          </span>
+          <span style="font-size: 1.4rem;">🧪</span>
+        </div>
+        <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">
+          ILC Integrator v0 • Base de Conhecimento
+        </div>
+      </div>
+
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.5px;">
+        Central de QA
+      </h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+        Diretrizes Mestras de Qualidade, Esteira de Testes, Sinergia com Azure DevOps e Padrão de Homologação
+      </p>
+    </header>
+
+    <!-- Conteúdo Integral da Central de QA -->
+    <main class="article-body">
+      
+      <!-- BLOCO 1: MANIFESTO & VISÃO GERAL DE QA -->
+      <div class="ilc-hero-banner" style="border-left: 4px solid var(--color-qa); margin-bottom: 30px;">
+        <div class="ilc-hero-tag" style="background: var(--color-qa-bg); color: var(--color-qa); border-color: var(--color-qa-border);">
+          🧪 Metodologia de Testes • Padrão ILC Integrator
+        </div>
+        <h2 class="ilc-hero-title">Qualidade como Pilar Estratégico: Shift-Left, BDD e TestOps</h2>
+        <p class="ilc-hero-desc">
+          No ecossistema <strong>ILC Integrator</strong>, a Qualidade de Software não é uma etapa final de inspeção, mas uma disciplina contínua aplicada desde a concepção dos requisitos (<em>Shift-Left Testing</em>). Adotamos a abordagem dos <strong>Três Amigos</strong> (<em>Negócio/Operações + QA + Engenharia de Software</em>) para garantir que cada funcionalidade nasça com critérios de aceite claros, mensagens de validação documentadas e testes rastreáveis vinculados às Instruções de Trabalho (ITs) oficiais.
+        </p>
+      </div>
+
+      <!-- BLOCO 2: SINERGIA DOCS HUB ⟷ AZURE DEVOPS -->
+      <h2>🤝 Sinergia: Como o Docs Hub e o Azure DevOps se Complementam</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+        A estratégia de qualidade do ILC Integrator opera em dois pilares integrados que se alimentam mutuamente: o <strong>Docs Hub</strong> (este portal) como a <em>Fonte Única da Verdade</em> para consulta e treinamento, e o <strong>Azure DevOps</strong> como o <em>Motor de Execução, Gestão Ágil e Rastreabilidade</em>.
+      </p>
+
+      <div class="table-container" style="margin-bottom: 28px;">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Dimensão</th>
+              <th style="width: 37%;">📖 ILC Integrator Docs Hub (Portal)</th>
+              <th style="width: 38%;">⚙️ Azure DevOps (Plataforma ALM)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Papel Central</strong></td>
+              <td><strong>Single Source of Truth</strong> (Conhecimento Vivo, Manuais e Treinamento)</td>
+              <td><strong>Central de Execução, Gestão de Backlog & CI/CD</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Público-Alvo</strong></td>
+              <td>Operadores, Clientes, Analistas de QA, Desenvolvedores e Gestores</td>
+              <td>Equipe de Engenharia, QA, Product Owners e Scrum Masters</td>
+            </tr>
+            <tr>
+              <td><strong>Estrutura de QA</strong></td>
+              <td>
+                • Matriz de Validações com mensagens reais de erro<br>
+                • Roteiros passo a passo com telas ilustradas<br>
+                • Cenários BDD em Gherkin prontos para automação<br>
+                • Diagramas de arquitetura com Pan & Zoom
+              </td>
+              <td>
+                • <strong>Epics</strong> (Migração/Módulo)<br>
+                • <strong>Features</strong> (Capacidades de Negócio)<br>
+                • <strong>User Stories</strong> com Critérios de Aceite BDD<br>
+                • <strong>Test Plans & Test Suites</strong> executáveis diários<br>
+                • <strong>Bugs</strong> linkados com rastreabilidade total
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Dinâmica de Uso</strong></td>
+              <td>Consulta de regras de negócio, estudo de fluxos e consulta de ITs (PDFs)</td>
+              <td>Execução de testes (Pass/Fail), sprint planning, Kanban boards e dashboards</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">🔗 Mapeamento Hierárquico no Azure DevOps</h3>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 16px;">
+        Cada módulo documentado no portal é automaticamente mapeado na estrutura de Work Items do Azure DevOps através dos nossos scripts de automação:
+      </p>
+
+      <div class="card-grid" style="margin-bottom: 32px;">
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: rgba(0, 82, 204, 0.1); color: var(--ilc-primary);">📦</div>
+          <h3>1. Epic de Módulo</h3>
+          <p>Representa a iniciativa macro do módulo (ex: <code>[QA] Migração Frontend - Frete Expresso (JSF -> Angular)</code>), vinculada à IT normativa.</p>
+        </div>
+
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: rgba(0, 168, 107, 0.1); color: var(--ilc-green);">✨</div>
+          <h3>2. Features & User Stories</h3>
+          <p>Features divididas por capacidades funcionais, contendo User Stories estruturadas por Persona e Critérios de Aceite em formato <em>Given / When / Then</em>.</p>
+        </div>
+
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: rgba(245, 158, 11, 0.1); color: var(--ilc-amber);">📋</div>
+          <h3>3. Test Plans & Test Cases</h3>
+          <p>Suítes de testes com passos enumerados (<em>Action</em>) e resultados esperados formais (<em>Expected Result</em>), alimentados pelos roteiros da Tab 2.</p>
+        </div>
+      </div>
+
+      <!-- BLOCO 3: A ESTEIRA DE TESTES & QUALITY GATES -->
+      <h2>🔄 A Esteira de Testes & Quality Gates (CI/CD)</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">
+        O fluxo de vida de uma funcionalidade desde a especificação até a entrada segura em Produção:
+      </p>
+
+      <div class="mermaid-wrapper" style="border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; margin-bottom: 30px; background: #ffffff;">
+        <div class="mermaid">
+graph TD
+    A["📄 1. Especificação & IT Normativa"] --> B["👥 2. Refinamento Three Amigos (QA + Dev + PO)"]
+    B --> C["🧪 3. Design de Testes (BDD + Matriz de Validações)"]
+    C --> D["⚙️ 4. Sincronização Azure DevOps (User Stories & Test Cases)"]
+    D --> E["💻 5. Desenvolvimento & Testes Unitários"]
+    E --> F["🚀 6. Deploy em Homologação (Staging)"]
+    F --> G["🔍 7. Execução dos Test Plans de QA no Portal"]
+    G --> H{"Bugs Encontrados?"}
+    H -- "Sim (Bloqueante / Alto)" --> I["🐛 Registro de Bug no Azure DevOps ➔ Correção"]
+    I --> F
+    H -- "Não (100% Pass / DoD Atingido)" --> J["🛡️ Quality Gate & Aprovação Formal de QA"]
+    J --> K["🚢 Deploy em Produção (Prod)"]
+    K --> L["✅ Smoke Test / Sanity Check em Produção"]
+
+    classDef stage fill:#f0f7ff,stroke:#0052cc,stroke-width:2px,color:#0052cc;
+    classDef gate fill:#fff8e6,stroke:#f59e0b,stroke-width:2px,color:#d97706;
+    classDef pass fill:#e6fcf5,stroke:#00a86b,stroke-width:2px,color:#00875a;
+    classDef bug fill:#fff1f0,stroke:#e02424,stroke-width:2px,color:#e02424;
+
+    class A,B,C,D,E,F,G stage;
+    class H gate;
+    class I bug;
+    class J,K,L pass;
+        </div>
+      </div>
+
+      <!-- BLOCO 4: PIRÂMIDE DE TESTES -->
+      <h2>🔺 Pirâmide de Testes do ILC Integrator</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">
+        Para garantir alta cobertura com eficiência e custo controlado, distribuímos os testes em 3 níveis complementares:
+      </p>
+
+      <div class="card-grid" style="margin-bottom: 32px;">
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: var(--color-qa-bg); color: var(--color-qa);">🔝</div>
+          <h3>Nível 3: Testes E2E, Manuais & Homologação</h3>
+          <p><strong>Foco:</strong> Validação de ponta a ponta dos fluxos operacionais, usabilidade em tela, testes exploratórios e validação com usuários-chave em <code>https://homolog.ilclogportal.com.br/</code>.</p>
+          <div class="card-footer-tags">
+            <span class="tag-badge">Roteiro Manual</span>
+            <span class="tag-badge">Homologação</span>
+            <span class="tag-badge">UAT</span>
+          </div>
+        </div>
+
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: var(--color-dev-bg); color: var(--color-dev);">⚙️</div>
+          <h3>Nível 2: Integração, APIs REST & EDIs</h3>
+          <p><strong>Foco:</strong> Testes de integração de endpoints REST, contratos de mensageria assíncrona, barramentos EDI (NOTFIS, CONEMB, OCOREN) e persistência com transações ACID no PostgreSQL.</p>
+          <div class="card-footer-tags">
+            <span class="tag-badge">APIs REST</span>
+            <span class="tag-badge">Layouts EDI</span>
+            <span class="tag-badge">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: var(--color-user-bg); color: var(--color-user);">🧱</div>
+          <h3>Nível 1: Testes Unitários & Beans</h3>
+          <p><strong>Foco:</strong> Validação de regras puras de cálculo (frete, alçadas, lead time), validações de campos e métodos isolados nos Managed Beans JSF e Services Spring Boot.</p>
+          <div class="card-footer-tags">
+            <span class="tag-badge">JUnit</span>
+            <span class="tag-badge">Mockito</span>
+            <span class="tag-badge">Services</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO 5: O PADRÃO DEFINITIVO DA TAB 2 (QA) -->
+      <h2>📐 O Padrão Definitivo da Tab 2 (Qualidade QA) nos 19 Módulos</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">
+        Todo módulo presente no ILC Integrator segue rigorosamente a <strong>Metodologia de 7 Seções de QA</strong>, garantindo consistência e completude para os analistas:
+      </p>
+
+      <div class="steps-container" style="margin-bottom: 32px;">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-body">
+            <div class="step-title">Metadados & Criticidade do Módulo</div>
+            <p>Define a criticidade operacional (Alta/Média/Baixa), alçadas financeiras de aprovação, SLAs de testes e link direto para a Instrução de Trabalho (IT) normativa.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <div class="step-title">Roteiro Passo a Passo de Testes Manuais</div>
+            <p>Guia detalhado numerado de execução com pré-condições, passos operacionais em tela, dados de teste a preencher e evidências formais esperadas (prints, logs ou toasts).</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-body">
+            <div class="step-title">Matriz de Validação & Mensagens Reais de Erro</div>
+            <p>Tabela exaustiva mapeando: Campo de Tela ➔ Validação Aplicada ➔ Regra de Negócio ➔ <strong>Mensagem Real de Erro exibida pelo Sistema</strong> ➔ Ação Corretiva.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-body">
+            <div class="step-title">Critérios de Aceite & Definition of Done (DoD)</div>
+            <p>Checklist mandatório de qualidade contendo requisitos funcionais, não-funcionais, segurança de alçada e auditoria que devem ser 100% cumpridos antes da aprovação.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <div class="step-body">
+            <div class="step-title">Especificação BDD em Gherkin (Dado / Quando / Então)</div>
+            <p>Cenários de comportamento (Caminho Feliz, Exceções de Negócio e Validações de Alçada) em linguagem natural estruturada, prontos para automação com Cucumber/Playwright.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">6</div>
+          <div class="step-body">
+            <div class="step-title">Matriz de Rastreabilidade & Gestão de Riscos</div>
+            <p>Mapeamento bidirecional conectando: Requisito de Negócio ➔ IT Normativa ➔ User Story no Azure DevOps ➔ Casos de Teste (Test Cases) ➔ Nível de Risco Operacional.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">7</div>
+          <div class="step-body">
+            <div class="step-title">Checklist de Regressão & Homologação</div>
+            <p>Conjunto enxuto de verificações obrigatórias de regressão (Smoke Test) para validar que novas alterações no módulo não quebraram fluxos adjacentes da esteira logística.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO 6: GESTÃO DE DEFEITOS NO AZURE DEVOPS -->
+      <h2>🐛 Gestão de Defeitos & Classificação de Severidade no Azure DevOps</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">
+        Critérios formais para registro de bugs no Azure DevOps Boards durante as baterias de homologação:
+      </p>
+
+      <div class="table-container" style="margin-bottom: 28px;">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">Severidade</th>
+              <th style="width: 30%;">Critério de Impacto</th>
+              <th style="width: 35%;">Exemplo no ILC Integrator</th>
+              <th style="width: 20%;">Ação / SLA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag-badge" style="background: rgba(224, 36, 36, 0.15); color: #e02424; font-weight:700;">🔴 1 - Bloqueante</span></td>
+              <td>Impede totalmente a execução do fluxo operacional, indisponibilidade de tela ou corrupção de dados. Sem contorno (workaround).</td>
+              <td>Erro 500 ao salvar Frete Expresso; impossibilidade de aprovação de alçada de viagem.</td>
+              <td><strong>Correção Imediata (Hotfix)</strong> • Bloqueia Deploy</td>
+            </tr>
+            <tr>
+              <td><span class="tag-badge" style="background: rgba(245, 158, 11, 0.15); color: #d97706; font-weight:700;">🟠 2 - Alta</span></td>
+              <td>Inconsistência funcional grave em cálculos, alçadas ou dados fiscais, mas existe contorno operacional temporário.</td>
+              <td>Cálculo incorreto de alíquota de pedágio em rota específica; falha no envio de e-mail de alerta.</td>
+              <td>Correção na Sprint atual • Impede Release Major</td>
+            </tr>
+            <tr>
+              <td><span class="tag-badge" style="background: rgba(0, 82, 204, 0.15); color: var(--ilc-primary); font-weight:700;">🟡 3 - Média</span></td>
+              <td>Falha de validação secundária, comportamento divergente de layout que não impede a conclusão da tarefa.</td>
+              <td>Filtro de busca por data não mantendo o valor selecionado após paginação da tabela.</td>
+              <td>Correção na próxima iteração / backlog planejado</td>
+            </tr>
+            <tr>
+              <td><span class="tag-badge" style="background: var(--bg-surface-subtle); color: var(--text-muted); font-weight:700;">🔵 4 - Baixa</span></td>
+              <td>Ajuste cosmético, desalinhamento visual leve, erro ortográfico em rótulos ou melhoria de usabilidade.</td>
+              <td>Label de campo desalinhada 2px; texto de tooltip com erro gramatical menor.</td>
+              <td>Backlog de melhorias contínuas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BLOCO 7: DEFINITION OF READY (DoR) & DEFINITION OF DONE (DoD) -->
+      <h2>✅ Definition of Ready (DoR) & Definition of Done (DoD)</h2>
+      <div class="card-grid" style="margin-bottom: 30px;">
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: var(--color-user-bg); color: var(--color-user);">📋</div>
+          <h3>Definition of Ready (DoR) — Entrada</h3>
+          <p>Critérios obrigatórios para que uma User Story seja considerada pronta para desenvolvimento:</p>
+          <ul style="font-size: 0.86rem; color: var(--text-secondary); margin-left: 18px; margin-top: 8px; line-height: 1.6;">
+            <li>Vinculação expressa à IT normativa correspondente.</li>
+            <li>Critérios de aceite definidos em formato BDD (<em>Given/When/Then</em>).</li>
+            <li>Mensagens de erro e validações de tela mapeadas.</li>
+            <li>Massa de dados de teste e permissões RBAC identificadas.</li>
+          </ul>
+        </div>
+
+        <div class="doc-card" style="cursor: default;">
+          <div class="card-icon-wrapper" style="background-color: var(--color-qa-bg); color: var(--color-qa);">🏆</div>
+          <h3>Definition of Done (DoD) — Saída / Deploy</h3>
+          <p>Critérios mandatórios para autorizar a liberação de release para Produção:</p>
+          <ul style="font-size: 0.86rem; color: var(--text-secondary); margin-left: 18px; margin-top: 8px; line-height: 1.6;">
+            <li>100% dos Test Cases do Test Plan executados com sucesso em Staging.</li>
+            <li>Zero bugs de Severidade 1 (Bloqueante) ou 2 (Alta) em aberto.</li>
+            <li>Bateria de Regressão (Smoke Test) aprovada sem quebra colateral.</li>
+            <li>Aprovação formal e evidências anexadas no Azure DevOps.</li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Rodapé Institucional -->
+    <footer class="export-doc-footer">
+      <div>
+        <strong>ILC Logística Integrada</strong> • Engenharia de Software & Garantia da Qualidade (QA)
+      </div>
+      <div>
+        Documentação Gerada a partir do ILC Integrator Docs Hub
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Inicialização do Mermaid
+    if (window.mermaid) {
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        securityLevel: 'loose',
+        fontFamily: 'Plus Jakarta Sans, system-ui, sans-serif'
+      });
+    }
+
+    // Suporte a parâmetro de impressão automática via URL (?print=true)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('print') === 'true') {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          window.print();
+        }, 1200);
+      });
+    }
+  </script>
+</body>
+</html>

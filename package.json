@@ -1,0 +1,30 @@
+{
+  "name": "ilc-integrator-docs-portal",
+  "version": "1.1.0",
+  "description": "Portal Central de Documentação, Governança de ITs, Central de QA (BDD/Gherkin) e Hub de Engenharia do ecossistema ILC Integrator.",
+  "main": "scripts/server.js",
+  "scripts": {
+    "start": "node scripts/server.js --open",
+    "serve": "node scripts/server.js",
+    "export:pdf": "scripts\\gerar_pdf_central_qa.bat"
+  },
+  "keywords": [
+    "ilc-integrator",
+    "documentation-portal",
+    "docs-hub",
+    "supply-chain",
+    "logistics",
+    "qa",
+    "bdd",
+    "gherkin",
+    "mermaid",
+    "instrucoes-de-trabalho",
+    "jsf-to-angular"
+  ],
+  "author": "ILC Integrator Logistics Company / Opah IT Consulting",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
